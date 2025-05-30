@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon -r dotenv/config --experimental-json-modules src/app.js"
   },
-  "keywords": [],
+  "keywords": ["konshu"],
   "author": "karan",
   "license": "ISC",
   "description": "this is a image and video server baisec ",

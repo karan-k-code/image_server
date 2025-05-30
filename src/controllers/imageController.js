@@ -86,4 +86,15 @@ const streamVideo = (req, res) => {
   });
 };
 
-export { getImage, uploadImage, streamVideo };
+const deletefile = (req, res) => {
+  const localpath = req.params.id;
+  fs.unlinkSync("./uploads/" + localpath); // Ensure file gets deleted
+
+  return res.status(201).json({
+    status: "success",
+    message: "image delete",
+    url: localpath,
+  });
+};
+
+export { getImage, uploadImage, streamVideo, deletefile };

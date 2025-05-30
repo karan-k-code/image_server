@@ -6,6 +6,7 @@ import {
   getImage,
   uploadImage,
   streamVideo,
+  deletefile,
 } from "./controllers/imageController.js";
 
 const app = express();
@@ -33,6 +34,7 @@ const upload = multer({ storage }); // Removed fileFilter
 
 // Routes
 app.post("/upload", upload.single("image"), uploadImage);
+app.post("/delete/:id", deletefile);
 app.get("/images/:imageName", getImage);
 app.get("/videos/:videoName", streamVideo); // Added route for video streaming
 
