@@ -14,10 +14,21 @@ const PORT = process.env.PORT || 3000;
 
 app.use(
   cors({
-    origin: process.env.CORS_ORIGINS,
+    origin: JSON.parse(process.env.CORS_ORIGINS),
     credentials: true,
   })
 );
+
+//
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "http://127.0.0.1:5504");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
 // Multer setup
 const storage = multer.diskStorage({

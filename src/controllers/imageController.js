@@ -31,8 +31,6 @@ const uploadImage = (req, res) => {
     req.file.filename
   }`;
 
-  // console.log(fileUrl);
-
   return res.status(201).json({
     message: `uploaded successfully`,
     fileUrl,
@@ -88,6 +86,10 @@ const streamVideo = (req, res) => {
 
 const deletefile = (req, res) => {
   const localpath = req.params.id;
+
+  if (localpath == "userimage.jpg") {
+    return;
+  }
   fs.unlinkSync("./uploads/" + localpath); // Ensure file gets deleted
 
   return res.status(201).json({
